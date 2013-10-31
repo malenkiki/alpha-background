@@ -128,6 +128,7 @@ if($opt->has('output'))
     catch(\Exception $e)
     {
         print($e->getMessage());
+        print("\n");
         exit(1);
     }
 
@@ -138,12 +139,14 @@ if($opt->has('output'))
     catch(\Exception $e)
     {
         print($e->getMessage());
+        print("\n");
         exit(1);
     }
 }
 else
 {
     print('You must provide at least a filename!');
+    print("\n");
     exit(1);
 }
 
