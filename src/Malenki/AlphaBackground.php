@@ -314,12 +314,13 @@ class AlphaBackground
         imagealphablending($res_img, false);
         imagesavealpha($res_img, true);
 
+        // Opacity order is reversed here for this function, and only in the range 0 - 127 inclusive.
         $int_color = imagecolorallocatealpha(
             $res_img,
             $this->int_red,
             $this->int_green,
             $this->int_blue,
-            round($this->float_alpha * 127)
+            127 - round($this->float_alpha * 127)
         );
 
         imagefill($res_img, 0, 0, $int_color);
