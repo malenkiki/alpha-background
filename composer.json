@@ -1,0 +1,21 @@
+{
+    "name": "malenki/alpha-background",
+    "type": "library",
+    "require": {
+        "php": ">=5.3.0",
+        "malenki/argile": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+        "name": "Michel Petit",
+        "email": "petit.michel@gmail.com",
+        "role": "Developer"
+    }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Malenki": "src/"
+        }
+    }
+}
