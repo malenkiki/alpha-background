@@ -49,7 +49,8 @@ $rgba->name('orange')->alpha(0.7)->save('some_file.png');
 
 ## For server
 
-TODO
+I have wroten a little script to put on a server to display background image. To use it, simply use the following lines into your CSS file.
+
 
 ``` css
 background-image: url(http://www.your-server.com/rgba-serveur.php?color=255,150,42,0.8);
@@ -57,14 +58,20 @@ background-image: url(http://www.your-server.com/rgba-serveur.php?color=red,0.5)
 
 ```
 
+The script is simple, but it works, you can add some of your code inside it ;)
+
+
 ## For CLI
 
-TODO
+You can create background image by using a little CLI script I have wroten for you.
+
+Following line show you how to use it.
+
 ``` bash
-rgba-cli.php -r 255 -g 150 -b 42 -a 0.8 -o image.png
-rgba-cli.php -n red -a 0.5 -o image.png
-rgba-cli.php --red 255 --green 150 --blue 42 --alpha 0.8 --output image.png
-rgba-cli.php --name red --alpha 0.5 --output image.png
-rgba-cli.php --hex ff962a --alpha 0.8 --output image.png
-rgba-cli.php --hex ff962acc --output image.png
+php rgba-cli.php -r 255 -g 150 -b 42 -a 0.8 -o image.png
+php rgba-cli.php -n red -a 0.5 -o image.png
+php rgba-cli.php --red 255 --green 150 --blue 42 --alpha 0.8 --output image.png
+php rgba-cli.php --name red --alpha 0.5 --output image.png
+php rgba-cli.php --hex ff962a --alpha 0.8 --output image.png
+php rgba-cli.php --hex ff962acc --output image.png
 ```
