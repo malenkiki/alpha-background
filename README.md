@@ -1,10 +1,19 @@
 # AlphaBackground
 
-Alpha background are difficult with IE7 and 8… So this is a clean solution without DX filter. Need PHP.
+__Alpha background are difficult with IE7 and IE8… So this is a clean solution without DX filter, using PHP.__
+
+My little class allows you to generate small PNG image (1px×1px) to have background with alpha transparency, for IE7 and IE8.
+
+To use it, many options are available for you:
+ - use the class to include it into your source code. I provide for you `composer.json` file to make this easy
+ - use a server script, I have wroten a little one for you
+ - use a CLI script, to generate images by other way.
+
+If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age.
 
 ## For custom use
 
-Example is better than long blahblah so, I start by showing you how to display at the browser the image:
+Examples are better than long blahblah so, I start by showing you how to display at the browser the image:
 
 ``` php
 $rgba = new AlphaBackground();
@@ -53,19 +62,19 @@ I have wroten a little script to put on a server to display background image. To
 
 
 ``` css
-background-image: url(http://www.your-server.com/rgba-serveur.php?color=255,150,42,0.8);
-background-image: url(http://www.your-server.com/rgba-serveur.php?color=red,0.5);
+background-image: url("/rgba-server.php?color=255,150,42,0.8");
+background-image: url("/rgba-server.php?color=red,0.5");
 
 ```
 
-The script is simple, but it works, you can add some of your code inside it ;)
+The script is simple, but it works, you can changed it to deserve your own need.
 
 
 ## For CLI
 
 You can create background image by using a little CLI script I have wroten for you.
 
-Following line show you how to use it.
+Following lines show you how to use it.
 
 ``` bash
 php rgba-cli.php -r 255 -g 150 -b 42 -a 0.8 -o image.png
