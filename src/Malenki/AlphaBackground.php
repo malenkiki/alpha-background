@@ -29,7 +29,7 @@ namespace Malenki;
 
 /**
  * Create simple image with alpha channel to have backgound with alpha 
- * available on IE8+ 
+ * available on IE7 and IE8 or a CSS part for IE6, IE7 and IE8. 
  * 
  * @author Michel Petit <michel.petit@gmail.com> 
  * @license MIT
@@ -39,7 +39,7 @@ class AlphaBackground
     protected $int_red = 0;
     protected $int_green = 0;
     protected $int_blue = 0;
-    protected $float_alpha = 0.0;
+    protected $float_alpha = 1.0;
 
 
     protected static $arr_colors = array(
@@ -365,5 +365,29 @@ class AlphaBackground
         $res_img = $this->createImage();
         imagepng($res_img, $str);
         imagedestroy($res_img);
+    }
+
+
+
+    public function css()
+    {
+        $arr = array();
+        $arr[] = sprintf(
+            'background: rgba(%1$d, %2$d, %3$d, %4$1.2f);',
+            $this->int_red,
+            $this->int_green, 
+            $this->int_blue, 
+            $this->float_alpha
+        );
+        $arr[] = sprintf(
+            'filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#%4$x%1$x%2$x%3$x,endColorstr=#%4$x%1$x%2$x%3$x);',
+            $this->int_red,
+            $this->int_green, 
+            $this->int_blue, 
+            floor($this->float_alpha * 255)
+
+        );
+
+        return implode("\n", $arr);
     }
 }

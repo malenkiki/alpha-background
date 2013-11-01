@@ -1,6 +1,6 @@
 # AlphaBackground
 
-__Alpha background are difficult with IE7 and IE8… So this is a clean solution without DX filter, using PHP.__
+__Alpha background are difficult with IE6, IE7 and IE8… So this is one of the solutions using PHP.__
 
 My little class allows you to generate small PNG image (1px×1px) to have background with alpha transparency, for IE7 and IE8.
 
@@ -9,7 +9,7 @@ To use it, many options are available for you:
  - use a server script, I have wroten a little one for you
  - use a CLI script, to generate images by other way.
 
-If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age.
+If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age, so, IE6 is in this family too.
 
 ## For custom use
 

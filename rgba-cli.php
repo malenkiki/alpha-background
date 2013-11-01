@@ -46,6 +46,11 @@ use Malenki\Argile\Options as Options;
 $opt = Options::getInstance();
 
 
+$opt->description('Alpha background are difficult with IE6, IE7 and IE8… So this is one of the solutions using PHP. This script can generate a small PNG image (1px×1px) to have background with alpha transparency, for IE7 and IE8.
+If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browsers of stone’s age.');
+// Bug #14 of Argile
+//$opt->version('Version 1.0 by Michel Petit <petit.michel@gmail.com>.');
+
 $opt->flexible();
 
 $opt->newValue('red')
@@ -73,65 +78,69 @@ $opt->newValue('alpha')
     ->required()
     ->short('a')
     ->long('alpha')
-    ->help('Alpha value, between 0 and 1', 'FLOAT')
+    ->help('Alpha value, between 0 (full transparency) and 1 (full opacity). By default alpha=1', 'FLOAT')
     ;
 
 $opt->newValue('hex')
     ->required()
     ->short('x')
     ->long('hex')
-    ->help('RGB(A) string, if alpha not given by this option or by --alpha, then alpha will be 0', 'STRING')
+    ->help('RGB(A) string, if alpha not given by this option or by --alpha, then alpha will be 1, full opacity.', 'STRING')
     ;
 
 $opt->newValue('output')
     ->required()
     ->short('o')
     ->long('output')
-    ->help('Output file name to save the PNG image. This option is mandatory.', 'FILE')
+    ->help('Output file name to save the PNG image.', 'FILE')
     ;
 
+$opt->newSwitch('css')
+    ->short('c')
+    ->long('css')
+    ->help('Dump CSS code to copy and paste into CSS file for good display of background with alpha tranparency in IE6, IE7, and IE8.');
 
 $opt->parse();
 
 
+$rgba = new AlphaBackground();
+
+try
+{
+    if($opt->has('red'))
+    {
+        $rgba->red((int) $opt->get('red'));
+    }
+
+    if($opt->has('green'))
+    {
+        $rgba->green((int) $opt->get('green'));
+    }
+
+    if($opt->has('blue'))
+    {
+        $rgba->blue((int) $opt->get('blue'));
+    }
+
+    if($opt->has('alpha'))
+    {
+        $rgba->alpha((float) $opt->get('alpha'));
+    }
+
+    if($opt->has('hex'))
+    {
+        $rgba->hex((string) $opt->get('hex'));
+    }
+}
+catch(\Exception $e)
+{
+    print($e->getMessage());
+    print("\n");
+    exit(1);
+}
+
 if($opt->has('output'))
 {
-    $rgba = new AlphaBackground();
-
-    try
-    {
-        if($opt->has('red'))
-        {
-            $rgba->red((int) $opt->get('red'));
-        }
-
-        if($opt->has('green'))
-        {
-            $rgba->green((int) $opt->get('green'));
-        }
-
-        if($opt->has('blue'))
-        {
-            $rgba->blue((int) $opt->get('blue'));
-        }
-
-        if($opt->has('alpha'))
-        {
-            $rgba->alpha((float) $opt->get('alpha'));
-        }
-
-        if($opt->has('hex'))
-        {
-            $rgba->hex((string) $opt->get('hex'));
-        }
-    }
-    catch(\Exception $e)
-    {
-        print($e->getMessage());
-        print("\n");
-        exit(1);
-    }
-
     try
     {
         $rgba->save($opt->get('output'));
@@ -145,9 +154,17 @@ if($opt->has('output'))
 }
 else
 {
-    print('You must provide at least a filename!');
-    print("\n");
-    exit(1);
+    if($opt->has('css'))
+    {
+        print($rgba->css());
+        print("\n");
+    }
+    else
+    {
+        print('You must provide at least a filename to create image!');
+        print("\n");
+        exit(1);
+    }
 }
 
 exit();
