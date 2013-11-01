@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Alpha-background by malenkiki</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Alpha-background</h1>
+          <h2>Alpha background are difficult with IE7-IE8… So this is a clean solution without DX filter. Need PHP.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/malenkiki/alpha-background/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/malenkiki/alpha-background/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/malenkiki/alpha-background" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="alphabackground" class="anchor" href="#alphabackground"><span class="octicon octicon-link"></span></a>AlphaBackground</h1>
+
+<p><strong>Alpha background are difficult with IE6, IE7 and IE8… So this is one of the solutions using PHP.</strong></p>
+
+<p>My little class allows you to generate small PNG image (1px×1px) to have background with alpha transparency, for IE7 and IE8.</p>
+
+<p>To use it, many options are available for you:</p>
+
+<ul>
+<li>use the class to include it into your source code. I provide for you <code>composer.json</code> file to make this easy</li>
+<li>use a server script, I have written a little one for you</li>
+<li>use a CLI script, to generate images by other way.</li>
+</ul><p>If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age, so, IE6 is in this family too.</p>
+
+<h2>
+<a name="how-to-install-it" class="anchor" href="#how-to-install-it"><span class="octicon octicon-link"></span></a>How to install it?</h2>
+
+<h3>
+<a name="composer" class="anchor" href="#composer"><span class="octicon octicon-link"></span></a>Composer</h3>
+
+<p>For custom use, by using my class to do what you want, use <a href="http://getcomposer.org/">composer</a> to include it into your project. In your <code>composer.json</code> file, include this:</p>
+
+<pre><code>"require": {
+       "malenki/alpha-background": "*"
+   }
+</code></pre>
+
+<p>Then, you can instanciate it by <code>new \Malenki\AlphaBackground()</code>.</p>
+
+<h3>
+<a name="taking-source-code" class="anchor" href="#taking-source-code"><span class="octicon octicon-link"></span></a>Taking source code</h3>
+
+<p>For a quick use, download the source, take CLI or server version of script, chaned it to create image like you want.</p>
+
+<h2>
+<a name="for-custom-use" class="anchor" href="#for-custom-use"><span class="octicon octicon-link"></span></a>For custom use</h2>
+
+<p>Examples are better than long blahblah so, I start by showing you how to display at the browser the image:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">red</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">green</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">blue</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">alpha</span><span class="p">(</span><span class="mf">0.8</span><span class="p">);</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</pre></div>
+
+<p>You can do it in one line too:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">red</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">green</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">blue</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">alpha</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</pre></div>
+
+<p>You can use hexadecimal string too :</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">hex</span><span class="p">(</span><span class="s1">'#ff962acc'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</pre></div>
+
+<p>The hexadecimal string can be without alpha:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">hex</span><span class="p">(</span><span class="s1">'#ff962a'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">alpha</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</pre></div>
+
+<p>You can use CSS color name too:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">'orange'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">alpha</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">();</span>
+</pre></div>
+
+<p>If you want save the image, into all previous example, replace the last used method by <code>save()</code>, this method take one argument, the file's name:</p>
+
+<div class="highlight highlight-php"><pre><span class="nv">$rgba</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AlphaBackground</span><span class="p">();</span>
+<span class="nv">$rgba</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s1">'orange'</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">alpha</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="s1">'some_file.png'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="for-server" class="anchor" href="#for-server"><span class="octicon octicon-link"></span></a>For server</h2>
+
+<p>I have written a little script to put on a server to display background image. To use it, simply use the following lines into your CSS file.</p>
+
+<div class="highlight highlight-css"><pre><span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">"/rgba-server.php?color=255,150,42,0.8"</span><span class="o">);</span>
+<span class="nt">background-image</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s2">"/rgba-server.php?color=red,0.5"</span><span class="o">);</span>
+
+</pre></div>
+
+<p>The script is simple, but it works, you can changed it to deserve your own need.</p>
+
+<h2>
+<a name="for-cli" class="anchor" href="#for-cli"><span class="octicon octicon-link"></span></a>For CLI</h2>
+
+<p>You can create background image by using a little CLI script I have written for you.</p>
+
+<p>Following lines show you how to use it.</p>
+
+<div class="highlight highlight-bash"><pre>php rgba-cli.php -r 255 -g 150 -b 42 -a 0.8 -o image.png
+php rgba-cli.php -n red -a 0.5 -o image.png
+php rgba-cli.php --red 255 --green 150 --blue 42 --alpha 0.8 --output image.png
+php rgba-cli.php --name red --alpha 0.5 --output image.png
+php rgba-cli.php --hex ff962a --alpha 0.8 --output image.png
+php rgba-cli.php --hex ff962acc --output image.png
+</pre></div>
+        </section>
+
+        <footer>
+          Alpha-background is maintained by <a href="https://github.com/malenkiki">malenkiki</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
