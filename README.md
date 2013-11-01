@@ -6,7 +6,7 @@ My little class allows you to generate small PNG image (1px×1px) to have backgr
 
 To use it, many options are available for you:
  - use the class to include it into your source code. I provide for you `composer.json` file to make this easy
- - use a server script, I have wroten a little one for you
+ - use a server script, I have written a little one for you
  - use a CLI script, to generate images by other way.
 
 If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age, so, IE6 is in this family too.
@@ -58,7 +58,7 @@ $rgba->name('orange')->alpha(0.7)->save('some_file.png');
 
 ## For server
 
-I have wroten a little script to put on a server to display background image. To use it, simply use the following lines into your CSS file.
+I have written a little script to put on a server to display background image. To use it, simply use the following lines into your CSS file.
 
 
 ``` css
@@ -72,7 +72,7 @@ The script is simple, but it works, you can changed it to deserve your own need.
 
 ## For CLI
 
-You can create background image by using a little CLI script I have wroten for you.
+You can create background image by using a little CLI script I have written for you.
 
 Following lines show you how to use it.
 
