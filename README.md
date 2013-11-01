@@ -11,6 +11,23 @@ To use it, many options are available for you:
 
 If you have some scruples to use an image for IE, I provide some features into my class to generate good line of CSS hacked for this browser of stone's age, so, IE6 is in this family too.
 
+## How to install it?
+
+### Composer
+For custom use, by using my class to do what you want, use [composer](http://getcomposer.org/) to include it into your project. In your `composer.json` file, include this:
+
+```
+"require": {
+       "malenki/alpha-background": "*"
+   }
+```
+
+Then, you can instanciate it by `new \Malenki\AlphaBackground()`.
+
+### Taking source code
+
+For a quick use, download the source, take CLI or server version of script, chaned it to create image like you want.
+
 ## For custom use
 
 Examples are better than long blahblah so, I start by showing you how to display at the browser the image:
