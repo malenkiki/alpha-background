@@ -42,6 +42,10 @@ class AlphaBackground
     protected $float_alpha = 1.0;
 
 
+    /**
+     * CSS official and unofficial name
+     * @var $arr_colors
+     */
     protected static $arr_colors = array(
         'aliceblue' => '#f0f8ff',
         'antiquewhite' => '#faebd7',
@@ -186,6 +190,13 @@ class AlphaBackground
     );
 
 
+    /**
+     * Checks the color value.
+     * 
+     * @param integer $int 
+     * @access protected
+     * @return void
+     */
     protected function validColor($int)
     {
         if($int < 0 || $int > 255)
@@ -198,6 +209,14 @@ class AlphaBackground
 
 
 
+    /**
+     * Converts RGB or RGBA hexadecimal string to RGV ou RGBA integers and 
+     * imports them into current object.
+     * 
+     * @param string $str 
+     * @access protected
+     * @return void
+     */
     protected function hexToRgba($str)
     {
         $str = preg_replace('/^#/', '', $str);
@@ -214,6 +233,13 @@ class AlphaBackground
 
 
 
+    /**
+     * Red channel, an integer between 0 and 255 
+     * 
+     * @param integer $int 
+     * @access public
+     * @return AlphaBackground
+     */
     public function red($int)
     {
         $this->validColor($int);
@@ -225,6 +251,13 @@ class AlphaBackground
 
 
 
+    /**
+     * Green channel, an integer between 0 and 255 
+     * 
+     * @param integer $int 
+     * @access public
+     * @return AlphaBackground
+     */
     public function green($int)
     {
         $this->validColor($int);
@@ -236,6 +269,13 @@ class AlphaBackground
 
 
 
+    /**
+     * Blue channel, an integer between 0 and 255 
+     * 
+     * @param integer $int 
+     * @access public
+     * @return AlphaBackground
+     */
     public function blue($int)
     {
         $this->validColor($int);
@@ -247,6 +287,13 @@ class AlphaBackground
 
 
 
+    /**
+     * Alpha channel, given as a float between 0 and 1 
+     * 
+     * @param float $float 
+     * @access public
+     * @return AlphaBackground
+     */
     public function alpha($float)
     {
         if(!is_numeric($float) || $float < 0 || $float > 1)
@@ -263,6 +310,18 @@ class AlphaBackground
 
 
 
+    /**
+     * Give color by hexadecimal string, with or without alpha.
+     *
+     * This can include or not the sharp character at the first position of the 
+     * string, and the end can have alpha value too.
+     *
+     * RGV value on 3 characters are not implemented.
+     * 
+     * @param string $str Hexadecimal string
+     * @access public
+     * @return AlphaBackground
+     */
     public function hex($str)
     {
         if(
@@ -281,6 +340,15 @@ class AlphaBackground
 
 
 
+    /**
+     * Give a CSS color name to define the color.
+     *
+     * This can be official or unafficial name, so, try to know! 
+     * 
+     * @param string $str Color’s name
+     * @access public
+     * @return AlphaBackground
+     */
     public function name($str)
     {
         if(!is_string($str))
@@ -300,6 +368,12 @@ class AlphaBackground
 
 
 
+    /**
+     * Internal code to generate PNG image.
+     * 
+     * @access protected
+     * @return resource
+     */
     protected function createImage()
     {
         if(!function_exists('imagecreatetruecolor'))
@@ -330,6 +404,14 @@ class AlphaBackground
 
 
 
+    /**
+     * Display image, in server context only.
+     *
+     * If this is used in CLI mode, you will get an `RuntimeException`
+     * 
+     * @access public
+     * @return void
+     */
     public function display()
     {
         if(PHP_SAPI == 'cli')
@@ -348,6 +430,13 @@ class AlphaBackground
 
 
 
+    /**
+     * Save color image as PNG file. 
+     * 
+     * @param string $str File’s name
+     * @access public
+     * @return void
+     */
     public function save($str)
     {
         if(!is_string($str) || (is_string($str) && strlen($str) == 0))
@@ -369,6 +458,14 @@ class AlphaBackground
 
 
 
+    /**
+     * Create CSS code to have good display on IE.
+     *
+     * Generated code include fallback too. 
+     * 
+     * @access public
+     * @return string
+     */
     public function css()
     {
         $arr = array();
