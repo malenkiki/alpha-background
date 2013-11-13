@@ -94,10 +94,10 @@ You can create background image by using a little CLI script I have written for 
 Following lines show you how to use it.
 
 ``` bash
-php rgba-cli.php -r 255 -g 150 -b 42 -a 0.8 -o image.png
-php rgba-cli.php -n red -a 0.5 -o image.png
-php rgba-cli.php --red 255 --green 150 --blue 42 --alpha 0.8 --output image.png
-php rgba-cli.php --name red --alpha 0.5 --output image.png
-php rgba-cli.php --hex ff962a --alpha 0.8 --output image.png
-php rgba-cli.php --hex ff962acc --output image.png
+./rgba-cli -r 255 -g 150 -b 42 -a 0.8 -o image.png
+./rgba-cli -n red -a 0.5 -o image.png
+./rgba-cli --red 255 --green 150 --blue 42 --alpha 0.8 --output image.png
+./rgba-cli --name red --alpha 0.5 --output image.png
+./rgba-cli --hex ff962a --alpha 0.8 --output image.png
+./rgba-cli --hex ff962acc --output image.png
 ```
