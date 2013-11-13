@@ -27,23 +27,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 namespace Malenki;
 
 
-define('DS', DIRECTORY_SEPARATOR);
-define('ARGILE_PATH', __DIR__ . DS . 'vendor'.DS.'malenki'.DS.'argile'.DS.'src'.DS.'Malenki'.DS.'Argile'.DS);
-define('ALPHA_PATH', __DIR__ . DS . 'src'.DS.'Malenki'.DS);
-
-include(ARGILE_PATH . 'Arg.php');
-include(ARGILE_PATH . 'Options.php');
-
-include(ALPHA_PATH . 'AlphaBackground.php');
+(@include_once __DIR__ . '/vendor/autoload.php') || @include_once __DIR__ . '/../../autoload.php';
 
 
-use Malenki\Argile\Arg as Arg;
-use Malenki\Argile\Options as Options;
-
-
-
-
-$opt = Options::getInstance();
+$opt = Argile\Options::getInstance();
 
 
 $opt->description('Alpha background are difficult with IE6, IE7 and IE8… So this is one of the solutions using PHP. This script can generate a small PNG image (1px×1px) to have background with alpha transparency, for IE7 and IE8.
