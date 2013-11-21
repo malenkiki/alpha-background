@@ -36,15 +36,42 @@ namespace Malenki;
  */
 class AlphaBackground
 {
+    /**
+     * Value of red channel, an integer in the range 0 to 255 
+     * 
+     * @var integer
+     * @access protected
+     */
     protected $int_red = 0;
+    /**
+     * Value of green channel, an integer in the range 0 to 255 
+     * 
+     * @var integer
+     * @access protected
+     */
     protected $int_green = 0;
+    /**
+     * Value of blue channel, an integer in the range 0 to 255 
+     * 
+     * @var integer
+     * @access protected
+     */
     protected $int_blue = 0;
+    /**
+     * Transparency level, a float from 0 to 1. 
+     * 
+     * @var float
+     * @access protected
+     */
     protected $float_alpha = 1.0;
 
 
     /**
-     * CSS official and unofficial name
-     * @var $arr_colors
+     * Official and unofficial CSS color names.
+     *
+     * Keys are CSS name and values are the hexadecimal string RGB.
+     *
+     * @var array
      */
     protected static $arr_colors = array(
         'aliceblue' => '#f0f8ff',
